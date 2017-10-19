@@ -1,5 +1,7 @@
 package edu.utdallas.taskExecutorImpl;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 import edu.utdallas.taskExecutor.Task;
 
 public class BlockingFifo {
@@ -17,35 +19,69 @@ public class BlockingFifo {
 		count = 0;
 	}
 
+	boolean isEmpty() {
+		if (count == 0)
+			return true;
+		else
+			return false;
+	}
+
+	boolean isFull() {
+		if (count == size)
+			return true;
+		else
+			return false;
+	}
+
 	void put(Task task) {
-		try {
-			if (count == size) {
-				notFull.wait();
+
+		synchronized (this) {
+			while (this.isFull()) {
+				try {
+					// Thread.yield();
+
+					notFull.wait();
+
+				} catch (InterruptedException e) {
+					notEmpty.notify();
+
+				}
 			}
-			synchronized (this) {
-				nextIn = (nextIn + 1) % size;
-				boundedBuffer[nextIn] = task;
-				count++;
-				notEmpty.notify();
+
+			boundedBuffer[nextIn] = task;
+			count++;
+			nextIn = (nextIn + 1) % size;
+			try {
+				Thread.sleep(50);
+			} catch (Exception e) {
 			}
-		} catch (Exception e) {
-			System.out.println("Has InterruptedException");
+
+			notify();
+
 		}
 
 	}
 
 	Task take() {
 
-		if (count <= 0) {
-			notEmpty.wait();
-		}
 		synchronized (this) {
 			Task temp = boundedBuffer[nextOut];
+			while (this.isEmpty()) {
+				try {
+					Thread.sleep(0);
+					notEmpty.wait();
+				} catch (Exception e) {
+					notFull.notify();
+				}
+			}
+
 			boundedBuffer[nextOut] = null;
 			nextOut = (nextOut + 1) % size;
 			count--;
-			notFull.notify();
+			notify();
+
 			return temp;
+
 		}
 	}
 }

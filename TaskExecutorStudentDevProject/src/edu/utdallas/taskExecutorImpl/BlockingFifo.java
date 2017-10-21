@@ -1,87 +1,92 @@
 package edu.utdallas.taskExecutorImpl;
 
-import java.util.concurrent.locks.ReentrantLock;
-
 import edu.utdallas.taskExecutor.Task;
 
 public class BlockingFifo {
 	// Use array (requirement 4)
 	private Task[] boundedBuffer;
 	private int size, nextIn, nextOut, count;
-	Object notFull, notEmpty;
+	static Object notFull, notEmpty;
 
 	BlockingFifo(int s) {
 		// initialize list with 100 tasks
 		size = s;
 		boundedBuffer = new Task[size];
-		nextOut = 0;
-		nextIn = 0;
-		count = 0;
+		nextOut = nextIn = count = 0;
+		notFull = new Object();
+		notEmpty = new Object();
 	}
 
 	boolean isEmpty() {
-		if (count == 0)
-			return true;
-		else
-			return false;
+		return count <= 0;
 	}
 
 	boolean isFull() {
-		if (count == size)
-			return true;
-		else
-			return false;
+		return count == size;
 	}
 
-	void put(Task task) {
+	public void put(Task task) {
 
-		synchronized (this) {
-			while (this.isFull()) {
-				try {
+		synchronized (notFull) {
+			try {
+				while (isFull()) {
 					// Thread.yield();
-
 					notFull.wait();
-
-				} catch (InterruptedException e) {
-					notEmpty.notify();
-
 				}
+			} catch (Exception e) {
+				System.out.println(e);
 			}
-
 			boundedBuffer[nextIn] = task;
 			count++;
 			nextIn = (nextIn + 1) % size;
-			try {
-				Thread.sleep(50);
-			} catch (Exception e) {
-			}
+			//System.out.println("Count after add: " + count);
+		}
 
-			notify();
+		synchronized (this) {
 
+		}
+
+		try {
+			Thread.sleep(0);
+		} catch (Exception e) {
+		}
+
+		synchronized (notEmpty) {
+			notEmpty.notify();
 		}
 
 	}
 
-	Task take() {
+	public Task take() {
+		Task temp;
+		synchronized (notEmpty) {
 
-		synchronized (this) {
-			Task temp = boundedBuffer[nextOut];
-			while (this.isEmpty()) {
+			while (isEmpty()) {
 				try {
-					Thread.sleep(0);
 					notEmpty.wait();
 				} catch (Exception e) {
-					notFull.notify();
+					System.out.println(e);
 				}
 			}
-
-			boundedBuffer[nextOut] = null;
+			temp = boundedBuffer[nextOut];
+			// boundedBuffer[nextOut] = null;
 			nextOut = (nextOut + 1) % size;
 			count--;
-			notify();
+			//System.out.println("Count after take: " + count);
+		}
 
-			return temp;
+		synchronized (this) {
 
 		}
+		try {
+			Thread.sleep(10);
+		} catch (Exception e) {
+		}
+		synchronized (notFull) {
+			notFull.notify();
+		}
+
+		return temp;
+
 	}
 }

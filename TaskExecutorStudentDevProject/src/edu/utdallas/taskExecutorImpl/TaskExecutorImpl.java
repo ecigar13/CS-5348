@@ -7,13 +7,13 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 import edu.utdallas.taskExecutor.Task;
 import edu.utdallas.taskExecutor.TaskExecutor;
-import edu.utdallas.blockingFIFO.*;
 
 public class TaskExecutorImpl implements TaskExecutor {
 
 	// Maintain a thread-safe buffer which can contain up to 100 tasks
+	//private ArrayBlockingQueue<Task> boundedBuffer=new ArrayBlockingQueue<Task>(100);
 	private BlockingFifo boundedBuffer = new BlockingFifo(100);
-
+	//private MyBlockingFIFO boundedBuffer = new MyBlockingFIFO(100);
 	// Consumer threads will run this runnable
 	Runnable TaskRunner = new Runnable() {
 		@Override
@@ -29,7 +29,7 @@ public class TaskExecutorImpl implements TaskExecutor {
 						Task task = boundedBuffer.take();
 						task.execute();
 					} catch (Exception e) {
-						// System.out.println("Ignoring error in task: " + e.getMessage());
+						 System.out.println("Ignoring error in task: " + e.getMessage());
 					}
 					Thread.yield();
 				

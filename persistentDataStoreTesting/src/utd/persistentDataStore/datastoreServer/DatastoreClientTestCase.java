@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
@@ -13,23 +14,18 @@ import org.junit.Test;
 
 import utd.persistentDataStore.datastoreClient.*;
 
-public class DatastoreClientTestCase
-{
+public class DatastoreClientTestCase {
 	int port = 10023;
 	String address = "localhost";
-	//String address = "ec2-35-166-187-119.us-west-2.compute.amazonaws.com";
-	//String address = "ec2-52-35-232-21.us-west-2.compute.amazonaws.com";
-	
+	// String address = "ec2-52-35-232-21.us-west-2.compute.amazonaws.com";
 
-	private InetAddress getAddress() throws UnknownHostException
-	{
+	private InetAddress getAddress() throws UnknownHostException {
 		InetAddress inetAddress = InetAddress.getByName(address);
 		return inetAddress;
 	}
 
 	@Test
-	public void testWrite() throws Exception
-	{
+	public void testWrite() throws Exception {
 		InetAddress address = getAddress();
 		DatastoreClient dsClient = new DatastoreClientImpl(address, port);
 
@@ -38,8 +34,7 @@ public class DatastoreClientTestCase
 	}
 
 	@Test
-	public void testWrite2() throws Exception
-	{
+	public void testWrite2() throws Exception {
 		InetAddress address = getAddress();
 		DatastoreClient dsClient = new DatastoreClientImpl(address, port);
 
@@ -49,8 +44,7 @@ public class DatastoreClientTestCase
 	}
 
 	@Test
-	public void testRead() throws Exception
-	{
+	public void testRead() throws Exception {
 		InetAddress address = getAddress();
 		DatastoreClient dsClient = new DatastoreClientImpl(address, port);
 
@@ -76,8 +70,7 @@ public class DatastoreClientTestCase
 	 * ClientException
 	 */
 	@Test(expected = ClientException.class)
-	public void testReadBroken() throws Exception
-	{
+	public void testReadBroken() throws Exception {
 		InetAddress address = getAddress();
 		DatastoreClient dsClient = new DatastoreClientImpl(address, port);
 
@@ -85,8 +78,7 @@ public class DatastoreClientTestCase
 	}
 
 	@Test
-	public void testDelete() throws Exception
-	{
+	public void testDelete() throws Exception {
 		InetAddress address = getAddress();
 		DatastoreClient dsClient = new DatastoreClientImpl(address, port);
 
@@ -101,8 +93,7 @@ public class DatastoreClientTestCase
 	 * ClientException
 	 */
 	@Test(expected = ClientException.class)
-	public void testDeleteBroken() throws Exception
-	{
+	public void testDeleteBroken() throws Exception {
 		InetAddress address = getAddress();
 		DatastoreClient dsClient = new DatastoreClientImpl(address, port);
 
@@ -110,8 +101,7 @@ public class DatastoreClientTestCase
 	}
 
 	@Test
-	public void testDirectory() throws Exception
-	{
+	public void testDirectory() throws Exception {
 		InetAddress address = getAddress();
 		DatastoreClient dsClient = new DatastoreClientImpl(address, port);
 
@@ -125,8 +115,7 @@ public class DatastoreClientTestCase
 		}
 	}
 
-	private byte[] generateData(int size)
-	{
+	private byte[] generateData(int size) {
 		byte data[] = new byte[size];
 		Random random = new Random();
 		random.nextBytes(data);

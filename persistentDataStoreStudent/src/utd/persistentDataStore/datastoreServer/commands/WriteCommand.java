@@ -27,14 +27,17 @@ public class WriteCommand extends ServerCommand {
 			PrintWriter writer = new PrintWriter(title, "UTF-8");
 
 			// read number of bytes to write
-			String t = StreamUtil.readLine(inputStream);
-			int length = Integer.parseInt(t);
-			logger.debug("Bytes: "+t);
+			String l = StreamUtil.readLine(inputStream);
+			int length = Integer.parseInt(l);
+			logger.debug("Writing bytes: " + l);
 
-			// write N bytes above
-			byte[] temp =StreamUtil.readData(length, inputStream);
-			logger.debug("Message: "+temp);
-			writer.println(temp);
+			// write N bytes above as N lines
+			byte[] temp = StreamUtil.readData(length, inputStream);
+			for (byte i : temp) {
+				// logger.debug("Writing: "+Byte.toString(i));
+				writer.println(Byte.toString(i));
+			}
+
 			writer.close();
 
 			// if everything is good then write response message

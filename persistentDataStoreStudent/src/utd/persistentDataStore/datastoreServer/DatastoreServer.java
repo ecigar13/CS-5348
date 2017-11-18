@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 
@@ -43,7 +44,7 @@ public class DatastoreServer
 				command.setInputStream(inputStream);
 				command.setOutputStream(outputStream);
 				command.run();
-				
+				 
 				StreamUtil.closeSocket(inputStream);
 			}
 			catch (ServerException ex) {
@@ -87,6 +88,7 @@ public class DatastoreServer
 
 	public static void main(String args[])
 	{
+
 		DatastoreServer server = new DatastoreServer();
 		try {
 			server.startup();

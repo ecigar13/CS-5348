@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.lang.StringBuilder;
 
 import utd.persistentDataStore.utils.ServerException;
 import utd.persistentDataStore.utils.StreamUtil;
@@ -31,21 +32,21 @@ public class ReadCommand extends ServerCommand {
 
 			//if FileReader didn't throw exception, create response message
 			String temp = r.readLine();
-			String message="";
+			StringBuilder message = new StringBuilder();
 			while (temp != null) {
-				message = message+ temp+"\n";
+				message.append(temp);
 				temp = r.readLine();
 			}
 			
 			//write the message in specified format
 			this.sendOK();
 			StreamUtil.writeLine(String.valueOf(message.length()), outputStream);
-			StreamUtil.writeLine(message, outputStream);
+			StreamUtil.writeData(message.toString().getBytes(), outputStream);
 			logger.debug("Bytes: "+message.length());
 			logger.debug("Message: "+message);
 			
 			//close file streams
-			logger.debug("Finished writing message");
+			logger.debug("Finished reading message.\n");
 			r.close();
 			f.close();
 		} catch (Exception e) {

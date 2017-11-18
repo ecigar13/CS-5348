@@ -30,7 +30,8 @@ public class WriteCommand extends ServerCommand {
 			String l = StreamUtil.readLine(inputStream);
 			int length = Integer.parseInt(l);
 			logger.debug("Writing bytes: " + l);
-
+			writer.println(l);
+			
 			// write N bytes above as N lines
 			byte[] temp = StreamUtil.readData(length, inputStream);
 			for (byte i : temp) {

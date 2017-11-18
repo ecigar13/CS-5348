@@ -31,30 +31,32 @@ public class ReadCommand extends ServerCommand {
 			BufferedReader r = new BufferedReader(f);
 
 			//if FileReader didn't throw exception, create response message
-			String temp = r.readLine();
-			StringBuilder message = new StringBuilder();
-			while (temp != null) {
-				message.append(temp);
-				temp = r.readLine();
-			}
+			String length = r.readLine();
+			byte[] arr = new byte[Integer.valueOf(length)];
+			for(int i = 0;i<arr.length;i++)
+				arr[i]= Byte.valueOf(r.readLine());
+			
 			
 			//write the message in specified format
 			this.sendOK();
-			StreamUtil.writeLine(String.valueOf(message.length()), outputStream);
-			StreamUtil.writeData(message.toString().getBytes(), outputStream);
-			logger.debug("Bytes: "+message.length());
-			logger.debug("Message: "+message);
+			StreamUtil.writeLine(length, outputStream);
+			StreamUtil.writeData(arr, outputStream);
+			logger.debug("Bytes: "+arr.length);
+			logger.debug("Message: "+arr);
 			
 			//close file streams
 			logger.debug("Finished reading message.\n");
 			r.close();
 			f.close();
-		} catch (Exception e) {
-			String temp = e.toString() + ":" + title + "\n";
-			StreamUtil.writeLine(temp, outputStream);
-			logger.debug(temp);
-		}
+		}catch(
 
+	Exception e)
+	{
+		String temp = e.toString() + ":" + title + "\n";
+		StreamUtil.writeLine(temp, outputStream);
+		logger.debug(temp);
 	}
+
+}
 
 }

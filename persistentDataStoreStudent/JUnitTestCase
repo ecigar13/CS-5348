@@ -1,9 +1,9 @@
-2017-11-18 03:05:53,384 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Read Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Read Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Directory Operation
+2017-11-18 17:52:30,754 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Read Operation
+2017-11-18 17:52:30,758 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
+2017-11-18 17:52:30,760 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
+2017-11-18 17:52:30,761 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Read Operation
+2017-11-18 17:52:30,762 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
+2017-11-18 17:52:30,763 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Directory Operation
 .classpath
 .project
 .settings
@@ -14,20 +14,9 @@ JUnitTestCase
 lib
 src
 testData
-testData 1510994363342
-testData 1510994388220
-testData 1510994502474
-testData 1510994512048
-testData 1510994525230
-testData 1510994563856
-testData 1510994573620
-testData 1510994650688
-testData 1510994771469
-testData 1510994859366
-testData 1510995054325
-testData 1510995725808
-testData 1510995813438
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Delete Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Delete Operation
-2017-11-18 03:05:53,400 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
+testData 1510996703335
+testData 1510996721437
+2017-11-18 17:52:30,767 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Delete Operation
+2017-11-18 17:52:30,768 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation
+2017-11-18 17:52:30,769 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Delete Operation
+2017-11-18 17:52:30,770 DEBUG utd.persistentDataStore.datastoreClient.DatastoreClientImpl - Executing Write Operation

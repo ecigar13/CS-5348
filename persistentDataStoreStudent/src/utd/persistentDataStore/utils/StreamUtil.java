@@ -66,7 +66,6 @@ public class StreamUtil
 		if(!line.endsWith("\n")) {
 			line = line + "\n";
 		}
-		
 		outputStream.write(line.getBytes());
 		outputStream.flush();
 	}

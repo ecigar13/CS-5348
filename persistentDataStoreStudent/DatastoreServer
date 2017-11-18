@@ -1,0 +1,54 @@
+2017-11-17 19:16:01,769 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Starting Service at port 10023
+2017-11-17 19:16:01,769 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request
+2017-11-17 19:16:08,050 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Request received
+2017-11-17 19:16:08,051 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Processing Request: utd.persistentDataStore.datastoreServer.commands.ReadCommand@7699a589
+2017-11-17 19:16:08,051 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Reading file: missingData
+2017-11-17 19:16:08,051 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - java.io.FileNotFoundException: missingData (The system cannot find the file specified):missingData
+
+2017-11-17 19:16:08,051 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request
+2017-11-17 19:16:08,051 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Request received
+2017-11-17 19:16:08,051 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Processing Request: utd.persistentDataStore.datastoreServer.commands.WriteCommand@58372a00
+2017-11-17 19:16:08,051 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Write request to file: testData
+2017-11-17 19:16:08,082 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Bytes: 100
+2017-11-17 19:16:08,082 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Message: [B@4dd8dc3
+2017-11-17 19:16:08,098 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Finished writing message to testData
+
+2017-11-17 19:16:08,098 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request
+2017-11-17 19:16:08,098 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Request received
+2017-11-17 19:16:08,098 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Processing Request: utd.persistentDataStore.datastoreServer.commands.WriteCommand@6d03e736
+2017-11-17 19:16:08,098 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Write request to file: testData
+2017-11-17 19:16:08,113 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Bytes: 100
+2017-11-17 19:16:08,113 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Message: [B@568db2f2
+2017-11-17 19:16:08,129 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Finished writing message to testData
+
+2017-11-17 19:16:08,129 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request
+2017-11-17 19:16:08,145 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Request received
+2017-11-17 19:16:08,145 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Processing Request: utd.persistentDataStore.datastoreServer.commands.WriteCommand@378bf509
+2017-11-17 19:16:08,145 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Write request to file: testData
+2017-11-17 19:16:08,160 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Bytes: 10
+2017-11-17 19:16:08,160 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Message: [B@5fd0d5ae
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Finished writing message to testData
+
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Request received
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Processing Request: utd.persistentDataStore.datastoreServer.commands.DeleteCommand@2d98a335
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Delete request: missingData
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - File not found:missingData
+
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Request received
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Processing Request: utd.persistentDataStore.datastoreServer.commands.WriteCommand@16b98e56
+2017-11-17 19:16:08,176 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Write request to file: testData
+2017-11-17 19:16:08,191 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Bytes: 10
+2017-11-17 19:16:08,191 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Message: [B@7ef20235
+2017-11-17 19:16:08,191 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Finished writing message to testData
+
+2017-11-17 19:16:08,191 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request
+2017-11-17 19:16:08,191 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Request received
+2017-11-17 19:16:08,191 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Processing Request: utd.persistentDataStore.datastoreServer.commands.WriteCommand@27d6c5e0
+2017-11-17 19:16:08,191 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Write request to file: testData 1510967768191
+2017-11-17 19:16:08,207 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Bytes: 100
+2017-11-17 19:16:08,207 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Message: [B@4f3f5b24
+2017-11-17 19:16:08,223 DEBUG utd.persistentDataStore.datastoreServer.commands.ServerCommand - Finished writing message to testData 1510967768191
+
+2017-11-17 19:16:08,223 DEBUG utd.persistentDataStore.datastoreServer.DatastoreServer - Waiting for request

@@ -18,6 +18,7 @@ public class DatastoreClientTestCase
 	int port = 10023;
 	String address = "localhost";
 	//String address = "ec2-35-166-187-119.us-west-2.compute.amazonaws.com";
+	//String address = "ec2-52-35-232-21.us-west-2.compute.amazonaws.com";
 	
 
 	private InetAddress getAddress() throws UnknownHostException

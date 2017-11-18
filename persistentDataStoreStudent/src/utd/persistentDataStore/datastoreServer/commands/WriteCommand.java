@@ -24,7 +24,7 @@ public class WriteCommand extends ServerCommand {
 			// can be improved by checking if the file exist
 			String title = StreamUtil.readLine(inputStream);
 			logger.debug("Write request to file: " + title);
-			PrintWriter writer = new PrintWriter("inMessage", "UTF-8");
+			PrintWriter writer = new PrintWriter(title, "UTF-8");
 
 			// read number of bytes to write
 			String t = StreamUtil.readLine(inputStream);

@@ -17,8 +17,6 @@ import utd.persistentDataStore.utils.FileUtil;
  */
 public class ReadCommand extends ServerCommand {
 	
-	//Initialize a FileUtil class to take care of the read method and throwing appropriate exceptions
-	FileUtil mFileUtil;
 
 	@Override
 	public void run() throws IOException, ServerException {
@@ -28,7 +26,7 @@ public class ReadCommand extends ServerCommand {
 		logger.debug("Reading file: " + title);
 		
 		//read the record in a temporary byte array, an exception will be thrown by readData if the record is not found
-		byte[] tmp = mFileUtil.readData(title);
+		byte[] tmp = FileUtil.readData(title);
 
 		sendOK();					//if the read was successful, append an OK to the output stream
 		StreamUtil.writeLine(tmp.length, outputStream);	//append the length of the data corresponding to the record

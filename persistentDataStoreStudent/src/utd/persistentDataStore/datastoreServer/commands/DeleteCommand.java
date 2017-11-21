@@ -6,20 +6,25 @@ import java.io.IOException;
 import utd.persistentDataStore.utils.ServerException;
 import utd.persistentDataStore.utils.StreamUtil;
 
+/* The delete operation will remove data associated with the given name from the
+ * service repository. See the protocol section for a description of the message
+ * structure.
+ */
 public class DeleteCommand extends ServerCommand {
-
-	public DeleteCommand() {
-		// TODO Auto-generated constructor stub
-		// The delete operation will remove data associated with the given name from the
-		// service repository. See the protocol section for a description of the message
-		// structure.
-	}
 
 	@Override
 	public void run() throws IOException, ServerException {
-		// TODO Auto-generated method stub
+		
+		//Obtain the name of the record to be deleted
 		String title = StreamUtil.readLine(inputStream);
 		logger.debug("Delete request: "+title);
+		
+		//Attempt to delete the said record
+		FileUtil.deleteData(title);	//it will throw an exception if the operation is unsuccessful
+		
+		sendOK();
+		
+		/*
 		File f = new File(title);
 
 		try {
@@ -40,6 +45,7 @@ public class DeleteCommand extends ServerCommand {
 			//catch and write message explaining the issue
 			StreamUtil.writeLine(e.getMessage(), outputStream);
 		}
+		*/
 
 	}
 

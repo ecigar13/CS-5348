@@ -63,26 +63,31 @@ public class DatastoreServer
 
 	private ServerCommand dispatchCommand(InputStream inputStream) throws ServerException, IOException
 	{
-		String commandString = StreamUtil.readLine(inputStream);
 		ServerCommand command;
-		if ("read".equalsIgnoreCase(commandString)) {
-			command= new ReadCommand();
+		
+		//Read the intent of the command from the first portion of the input stream
+		String commandString = StreamUtil.readLine(inputStream);
+		
+		if ("read".equalsIgnoreCase(commandString)) {		//if the client intent is to read a specific record
+			command = new ReadCommand();
 
 		}
-		else if ("write".equalsIgnoreCase(commandString)) {
+		else if ("write".equalsIgnoreCase(commandString)) {	//if the client intent is to write/update a specific record
 			command = new WriteCommand();
 
 		}
-		else if ("directory".equalsIgnoreCase(commandString)) {
+		else if ("directory".equalsIgnoreCase(commandString)) {	//if the client intent is to list all the stored records
 			command = new DirectoryCommand();
 			
 		}
-		else if ("delete".equalsIgnoreCase(commandString)) {
+		else if ("delete".equalsIgnoreCase(commandString)) {	//if the client intent is to delete a specific record
 			command = new DeleteCommand();
 		}
-		else {
+		else {							//if the intent is not recognized by the server
 			throw new ServerException("Unknown Request: " + commandString);
 		}
+		
+		//return the appropriate command to be run
 		return command;
 	}
 

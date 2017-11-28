@@ -6,12 +6,17 @@ import java.io.File;
 
 import utd.persistentDataStore.utils.ServerException;
 import utd.persistentDataStore.utils.StreamUtil;
+import utd.persistentDataStore.utils.FileUtil;
+import org.apache.log4j.Logger;
+import java.util.List;
 
 /* The directory operation will respond with a list of names that are currently
  * stored by the service. See the protocol section for a description of the
  * message structure.
  */
 public class DirectoryCommand extends ServerCommand {
+	
+	private static Logger logger = Logger.getLogger(DirectoryCommand.class);
 
 	@Override
 	public void run() throws IOException, ServerException {
@@ -22,9 +27,9 @@ public class DirectoryCommand extends ServerCommand {
 		List<String> file_list = FileUtil.directory();
 		
 		sendOK();						//Append OK to the output stream if the operation was successful
-		StreamUtil.writeLine(file_list.size(), outputStream);	//Append the number of records to the output stream next
+		StreamUtil.writeLine(file_list.size() + "", outputStream);	//Append the number of records to the output stream next
 		//Append names of all the records successively, present in the list
-		for(String s : List){
+		for(String s : file_list){
 			StreamUtil.writeLine(s, outputStream);
 			logger.debug("Listing " + s);
 		}

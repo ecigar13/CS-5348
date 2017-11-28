@@ -5,12 +5,16 @@ import java.io.IOException;
 
 import utd.persistentDataStore.utils.ServerException;
 import utd.persistentDataStore.utils.StreamUtil;
+import utd.persistentDataStore.utils.FileUtil;
+import org.apache.log4j.Logger;
 
 /* The delete operation will remove data associated with the given name from the
  * service repository. See the protocol section for a description of the message
  * structure.
  */
 public class DeleteCommand extends ServerCommand {
+	
+	private static Logger logger = Logger.getLogger(DeleteCommand.class);
 
 	@Override
 	public void run() throws IOException, ServerException {

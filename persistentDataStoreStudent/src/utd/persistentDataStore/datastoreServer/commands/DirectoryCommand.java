@@ -2,8 +2,6 @@ package utd.persistentDataStore.datastoreServer.commands;
 
 import java.io.IOException;
 
-import java.io.File;
-
 import utd.persistentDataStore.utils.ServerException;
 import utd.persistentDataStore.utils.StreamUtil;
 import utd.persistentDataStore.utils.FileUtil;

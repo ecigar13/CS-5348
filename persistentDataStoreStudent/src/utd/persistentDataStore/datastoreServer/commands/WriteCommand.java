@@ -1,10 +1,11 @@
 package utd.persistentDataStore.datastoreServer.commands;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import utd.persistentDataStore.utils.ServerException;
 import utd.persistentDataStore.utils.StreamUtil;
+import utd.persistentDataStore.utils.FileUtil;
+import org.apache.log4j.Logger;
 
 /* The write operation will save the data contained in the byte[] associated
  * with the given name. See the protocol section for a description of the
@@ -12,6 +13,8 @@ import utd.persistentDataStore.utils.StreamUtil;
  * name for later retrieval.
  */
 public class WriteCommand extends ServerCommand {
+	
+	private static Logger logger = Logger.getLogger(WriteCommand.class);
 	
 	@Override
 	public void run() throws IOException, ServerException {
@@ -26,7 +29,7 @@ public class WriteCommand extends ServerCommand {
 		//Send an OK message if the operation was successful
 		sendOK();
 		
-		logger.debug("Finished writing message to " + title + "\n");
+		logger.debug("Finished writing message to " + record_name + "\n");
 		
 		/*
 		try {

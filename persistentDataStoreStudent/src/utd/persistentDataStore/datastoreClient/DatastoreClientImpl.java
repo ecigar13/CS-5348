@@ -54,8 +54,8 @@ public class DatastoreClientImpl implements DatastoreClient {
 			//Write a formatted request to the output stream towards the server, with parameters separated by a delimiter
 			StreamUtil.writeLine("write", output);	//A new-line delimiter will be automatically added by the writeLine method
 			StreamUtil.writeLine(name, output);
-			StreamUtil.writeLine(data.length, output);
-			StreamUtil.writeData(data, output);s
+			StreamUtil.writeLine(data.length + "", output);
+			StreamUtil.writeData(data, output);
 
 			//Obtain the response (possibly acknowledgement) from the server for the corresponding request
 			String response = StreamUtil.readLine(input);

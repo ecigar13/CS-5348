@@ -1,14 +1,11 @@
 package utd.persistentDataStore.datastoreServer.commands;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.lang.StringBuilder;
 
 import utd.persistentDataStore.utils.ServerException;
 import utd.persistentDataStore.utils.StreamUtil;
 import utd.persistentDataStore.utils.FileUtil;
+import org.apache.log4j.Logger;
 
 /* The read operation will retrieve from the server data previously saved using
  * the provided name. If the name is not found, the response message will
@@ -17,6 +14,7 @@ import utd.persistentDataStore.utils.FileUtil;
  */
 public class ReadCommand extends ServerCommand {
 	
+	private static Logger logger = Logger.getLogger(ReadCommand.class);
 
 	@Override
 	public void run() throws IOException, ServerException {
@@ -29,7 +27,7 @@ public class ReadCommand extends ServerCommand {
 		byte[] tmp = FileUtil.readData(title);
 
 		sendOK();					//if the read was successful, append an OK to the output stream
-		StreamUtil.writeLine(tmp.length, outputStream);	//append the length of the data corresponding to the record
+		StreamUtil.writeLine(tmp.length + "", outputStream);	//append the length of the data corresponding to the record
 		StreamUtil.writeData(tmp, outputStream);	//append the data corresponding to the record
 		
 		//Log the read parameters
